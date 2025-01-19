@@ -110,7 +110,7 @@ function App() {
         <textarea
           rows="4"
           className="flex-grow text-black textarea-bordered textarea"
-          placeholder="Type your message here"
+          placeholder="Type your message here..."
           disabled={loading}
           value={input}
           onChange={(e) => {
