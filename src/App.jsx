@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     console.log(localStorage.getItem("messages"));
-    const localMessages = localStorage.getItem('messages') || "[]"
+    const localMessages = localStorage.getItem('messages') || `[{"sender":"ai", "message": "Hey there, future psychologist! 👋 I'm your friendly GetPsyched! chatbot, here to help you ace your studies. Ready to get psyched for your reviews?"}]`
     setMessages(JSON.parse(localMessages))
     scrollDown()
   }, [])
@@ -74,7 +74,7 @@ function App() {
     setMessages([])
   }
   return (
-    <div className="min-h-[100svh] flex-col flex">
+    <div className="min-h-[100svh] flex-col flex sm:max-w-[640px] mx-auto border">
       <div className="p-6 pb-4 flex items-center justify-between gap-2 sticky top-0 border-b border-s z-10 bg-white">
         <div className="text-2xl font-bold flex items-center gap-2">
           GetPsych
@@ -109,13 +109,14 @@ function App() {
           rows="4"
           className="flex-grow text-black textarea-bordered textarea"
           placeholder="Type your message here"
+          disabled={loading}
           value={input}
           onChange={(e) => {
             console.log(e.target.value);
             setInput(e.target.value);
           }}
         ></textarea>
-        <button className="btn btn-primary" onClick={sendMessage}>
+        <button className="btn btn-primary" onClick={sendMessage} disabled={loading}>
           <SendHorizontal />
         </button>
       </div>
