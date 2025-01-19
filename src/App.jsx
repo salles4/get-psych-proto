@@ -51,6 +51,7 @@ function App() {
       
       localStorage.setItem('messages', JSON.stringify(newMessagesList));
       setMessages(newMessagesList);
+      setInput('')
       setLoading(false);
       scrollDown();
     })
