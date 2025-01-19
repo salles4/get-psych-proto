@@ -3,6 +3,7 @@ import './App.css'
 import { PencilRuler, SendHorizontal } from 'lucide-react'
 import parse from 'html-react-parser'
 import Loader from './Loader';
+import { addMessage } from './supabase';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -53,6 +54,7 @@ function App() {
       setMessages(newMessagesList);
       setInput('')
       setLoading(false);
+      addMessage(input, aiChat)
       scrollDown();
     })
     .catch(error => console.error(error)
